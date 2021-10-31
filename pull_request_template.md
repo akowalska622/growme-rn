@@ -18,6 +18,6 @@ You're fit now!
 
 ## Checklist
 
- - [ ] I checked the diff
- - [ ] I formatted the code
- - [ ] I wrote tests
+- [ ] I checked the diff
+- [ ] I formatted the code
+- [ ] I wrote tests
