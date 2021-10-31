@@ -31,7 +31,9 @@ const lightModeColors = {
 };
 
 export default (isDarkMode = true) => StyleSheet.create({
-  background: {
-    backgroundColor: isDarkMode ? darkModeColors.background : lightModeColors.background,
-  },
-});
+    background: {
+      backgroundColor: isDarkMode
+        ? darkModeColors.background
+        : lightModeColors.background,
+    },
+  });

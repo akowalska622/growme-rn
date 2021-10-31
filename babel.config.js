@@ -3,14 +3,20 @@ module.exports = (api) => {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      ['module-resolver', {
-        alias: {
-          Constants: './src/constants',
+      [
+        'module-resolver',
+        {
+          alias: {
+            Constants: './src/constants',
+          },
         },
-      }],
-      ['@babel/plugin-transform-react-jsx', {
-        runtime: 'automatic',
-      }],
+      ],
+      [
+        '@babel/plugin-transform-react-jsx',
+        {
+          runtime: 'automatic',
+        },
+      ],
     ],
   };
 };
