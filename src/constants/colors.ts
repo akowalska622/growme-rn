@@ -30,7 +30,8 @@ const lightModeColors = {
   text: EBaseColors.navyBlue,
 };
 
-export default (isDarkMode = true) => StyleSheet.create({
+export default (isDarkMode = true) =>
+  StyleSheet.create({
     background: {
       backgroundColor: isDarkMode
         ? darkModeColors.background
