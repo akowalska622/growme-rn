@@ -17,7 +17,7 @@ enum EFontSizes {
   subhead = 14,
   footnote = 12,
   captionOne = 11,
-  captionTwo = 11
+  captionTwo = 11,
 }
 
 export default StyleSheet.create({

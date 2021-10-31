@@ -8,7 +8,7 @@ enum EBaseColors {
   orange = '#E59112',
   red = '#B05656',
   white = '#F3F3F3',
-};
+}
 
 const darkModeColors = {
   alert: EBaseColors.red,
@@ -28,10 +28,13 @@ const lightModeColors = {
   primary: EBaseColors.green,
   secondary: EBaseColors.orange,
   text: EBaseColors.navyBlue,
-}
+};
 
-export default (isDarkMode = true) => StyleSheet.create({
-  background: {
-    backgroundColor: isDarkMode ? darkModeColors.background : lightModeColors.background
-  }
-})
+export default (isDarkMode = true) =>
+  StyleSheet.create({
+    background: {
+      backgroundColor: isDarkMode
+        ? darkModeColors.background
+        : lightModeColors.background,
+    },
+  });

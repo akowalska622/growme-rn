@@ -1,22 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Colors, Layout, Spacing } from 'Constants';
+import styles from './App.styles';
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    ...Colors().background,
-    ...Layout.center,
-    ...Spacing.padding,
-  },
-});
+const App = () => (
+  <View style={styles.container}>
+    <Text>Open up App.tsx to start working on your app!</Text>
+  </View>
+);
 
 export default App;

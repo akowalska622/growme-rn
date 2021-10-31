@@ -3,7 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "Constants": [ "./src/constants" ],
+      "Constants": ["./src/constants"]
     }
   }
 }
