@@ -3,10 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb-typescript',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb-typescript', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -29,9 +26,15 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    'sort-imports-es6-autofix/sort-imports-es6': ['error', {
-      memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'],
-    }],
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      'error',
+      {
+        memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'],
+      },
+    ],
   },
 };
