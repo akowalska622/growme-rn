@@ -8,7 +8,7 @@ interface IAuthState {
 }
 
 const initialState: IAuthState = {
-  isSignedIn: true, // TODO: change to false when authorization flow is set up
+  isSignedIn: false,
 };
 
 export const authReducer = produce((draftState, { type }: AuthActionsType) => {
