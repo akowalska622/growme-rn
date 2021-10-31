@@ -5,7 +5,7 @@ enum ESpacing {
   regular = 16,
   big = 22,
   veryBig = 44,
-  large = 88
+  large = 88,
 }
 
 export default StyleSheet.create({
