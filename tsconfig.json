@@ -1,11 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
+  "typeRoots": ["./src/types"],
   "compilerOptions": {
     "strict": true,
     "baseUrl": "./src",
     "paths": {
       "Constants/*": ["./constants/*"],
-      "Screens/*": ["./screens/*"],
+      "Screens/*": ["./screens/*"]
     }
   }
 }
