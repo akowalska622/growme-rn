@@ -3,15 +3,16 @@ import { useState } from 'react';
 
 import { EAuthContext } from '../enums/EAuthContext';
 import { authContextMap } from 'Screens/AuthScreen.constants';
-import { signIn } from '../redux/auth/authActions';
+import { signIn } from '../redux/auth/actions/signInActions';
+import { signUp } from '../redux/auth/actions/signUpActions';
 
 type UseAuthType = (
   username: string,
   password: string,
   repeatedPassword: string,
 ) => {
-  additionalInfo: string,
-  changeContext: () => void,
+  additionalInfo: string;
+  changeContext: () => void;
   handlePrimaryButtonPress: () => void;
   isLogInContext: boolean;
   primaryButtonTitle: string;
@@ -30,14 +31,12 @@ export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
 
   const changeContext = () => setContext(getSecondContext());
 
-  const handleLogin = () => dispatch(signIn()); // TODO: pass username and password
+  const handleLogin = () => dispatch(signIn(username, password));
 
-  const handleRegistration = () => {
-    if (username && password === repeatedPassword) {
-      // dispatch(registerUser({ username, password })); // TODO: add register action
-      changeContext();
-    }
-  };
+  const handleRegistration = () =>
+    username &&
+    password === repeatedPassword &&
+    dispatch(signUp(username, password));
 
   const handlePrimaryButtonPress = () => {
     if (isLogInContext) return handleLogin();
