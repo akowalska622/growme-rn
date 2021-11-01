@@ -1,9 +1,17 @@
-import { Text, View } from 'react-native';
+import { Button, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+
+import { signOut } from '../redux/auth/authActions';
+import { styles } from './ProfileScreen.styles';
 
 export const ProfileScreen = () => {
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => dispatch(signOut());
+
   return (
-    <View>
-      <Text>Profile screen</Text>
+    <View style={styles.container}>
+      <Button title="Log out" onPress={handleLogOut} />
     </View>
   );
 };
