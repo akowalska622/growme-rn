@@ -6,8 +6,10 @@ module.exports = (api) => {
       [
         'module-resolver',
         {
+          root: './src',
           alias: {
             Constants: './src/constants',
+            Screens: './src/screens',
           },
         },
       ],

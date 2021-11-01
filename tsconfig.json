@@ -2,8 +2,10 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "baseUrl": "./src",
     "paths": {
-      "Constants": ["./src/constants"]
+      "Constants/*": ["./constants/*"],
+      "Screens/*": ["./screens/*"],
     }
   }
 }
