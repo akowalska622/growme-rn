@@ -8,7 +8,7 @@ import { getAuth } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
+  apiKey: String(FIREBASE_API_KEY),
   authDomain: `${FIREBASE_PROJECT_ID}.firebaseapp.com`,
   databaseURL: `https://${FIREBASE_PROJECT_ID}.firebaseio.com`,
   projectId: FIREBASE_PROJECT_ID,
