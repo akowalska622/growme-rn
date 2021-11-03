@@ -47,7 +47,7 @@ export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
   useEffect(() => {
     const testUsername = String(TEST_USERNAME);
     const testPassword = String(TEST_PASSWORD);
-    if (process.env.NODE_ENV === 'development' && testUsername && testPassword)
+    if (__DEV__ && testUsername && testPassword)
       dispatch(signIn(testUsername, testPassword));
   }, []);
 
