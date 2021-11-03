@@ -17,12 +17,4 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textInput: {
-    backgroundColor: 'white',
-    borderRadius: 5,
-    height: 40,
-    margin: 5,
-    padding: 15,
-    width: 200,
-  },
 });
