@@ -1,5 +1,6 @@
+import { TEST_PASSWORD, TEST_USERNAME } from 'react-native-dotenv';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { EAuthContext } from '../enums/EAuthContext';
 import { authContextMap } from 'Screens/AuthScreen.constants';
@@ -42,6 +43,13 @@ export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
     if (isLogInContext) return handleLogin();
     handleRegistration();
   };
+
+  useEffect(() => {
+    const testUsername = String(TEST_USERNAME);
+    const testPassword = String(TEST_PASSWORD);
+    if (__DEV__ && testUsername && testPassword)
+      dispatch(signIn(testUsername, testPassword));
+  }, []);
 
   return {
     additionalInfo: authContextMap[getSecondContext()].info,
