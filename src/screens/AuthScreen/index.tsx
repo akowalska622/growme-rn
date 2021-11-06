@@ -1,65 +1,84 @@
+import * as yup from 'yup';
 import { Button, Text, View } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import { AuthFormData, validationRules } from './AuthScreen.validation';
-import { Validator } from '../../ui/Validator';
+import { FormInput } from '../../ui/FormInput';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
 
-export const AuthScreen = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<AuthFormData>();
+enum EAuthScreenFields {
+  username = 'username',
+  password = 'password',
+  confirmPassword = 'confirmPassword',
+}
 
+export interface AuthFormData {
+  username: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export const AuthScreen = () => {
   const {
     additionalInfo,
     changeContext,
-    onSubmit,
     isLogInContext,
+    onInvalid,
+    onSubmit,
     primaryButtonTitle,
     secondaryButtonTitle,
   } = useAuth();
 
-  console.log(errors);
+  const authSchema = yup.object().shape({
+    username: yup.string().email().required(),
+    password: yup.string().required(),
+    confirmPassword: isLogInContext
+      ? yup.string()
+      : yup
+          .string()
+          .required()
+          .oneOf(
+            [yup.ref(EAuthScreenFields.password), null],
+            "Passwords don't match!",
+          ),
+  });
+
+  const { control, handleSubmit } = useForm<AuthFormData>({
+    resolver: yupResolver(authSchema),
+  });
 
   return (
     <View style={styles.container}>
       <View style={styles.signInContainer}>
-        <Validator
+        <FormInput
+          label="E-mail"
           control={control}
-          // isError={errors.username}
-          name="username"
+          name={EAuthScreenFields.username}
           placeholder="E-mail"
-          rules={validationRules.username}
         />
-        {/* <Text>{errors.username}</Text> */}
-        <Validator
+        <FormInput
+          label="Password"
           autoCorrect={false}
           control={control}
-          // isError={errors.password}
-          name="password"
+          name={EAuthScreenFields.password}
           placeholder="Password"
-          rules={validationRules.password}
           secureTextEntry
         />
-        {/* <Text>{errors.password}</Text> */}
         {!isLogInContext && (
-          <>
-            <Validator
-              autoCorrect={false}
-              control={control}
-              // isError={errors.repeatedPassword}
-              name="repeatedPassword"
-              placeholder="Repeat password"
-              rules={validationRules.repeatedPassword}
-              secureTextEntry
-            />
-            {/* <Text>{errors.repeatedPassword}</Text> */}
-          </>
+          <FormInput
+            label="Confirm password"
+            autoCorrect={false}
+            control={control}
+            name={EAuthScreenFields.confirmPassword}
+            placeholder="Confirm password"
+            secureTextEntry
+          />
         )}
-        <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
+        <Button
+          title={primaryButtonTitle}
+          onPress={handleSubmit(onSubmit, onInvalid)}
+        />
         {isLogInContext && <Text>I forgot my password.</Text>}
       </View>
       <View style={styles.switchContextContainer}>

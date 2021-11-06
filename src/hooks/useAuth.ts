@@ -2,7 +2,7 @@ import { TEST_PASSWORD, TEST_USERNAME } from 'react-native-dotenv';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import { AuthFormData } from 'Screens/AuthScreen/AuthScreen.validation';
+import { AuthFormData } from 'Screens/AuthScreen';
 import { EAuthContext } from '../enums/EAuthContext';
 import { authContextMap } from 'Screens/AuthScreen/AuthScreen.constants';
 import { signIn } from '../redux/auth/actions/signInActions';
@@ -12,6 +12,7 @@ type UseAuthType = () => {
   additionalInfo: string;
   changeContext: () => void;
   isLogInContext: boolean;
+  onInvalid: (errors: Object) => void;
   onSubmit: ({ username, password }: AuthFormData) => void;
   primaryButtonTitle: string;
   secondaryButtonTitle: string;
@@ -40,6 +41,10 @@ export const useAuth: UseAuthType = () => {
     handleRegistration(username, password);
   };
 
+  // TODO: could be used for try count validation (=== 5, block form for some time)
+  const onInvalid = (errors: Object) => console.log(errors);
+
+  // TODO: uncomment before merge
   /* useEffect(() => {
     const testUsername = String(TEST_USERNAME);
     const testPassword = String(TEST_PASSWORD);
@@ -50,8 +55,9 @@ export const useAuth: UseAuthType = () => {
   return {
     additionalInfo: authContextMap[getSecondContext()].info,
     changeContext,
-    onSubmit,
     isLogInContext,
+    onInvalid,
+    onSubmit,
     primaryButtonTitle: authContextMap[context].buttonTitle,
     secondaryButtonTitle: authContextMap[getSecondContext()].buttonTitle,
   };
