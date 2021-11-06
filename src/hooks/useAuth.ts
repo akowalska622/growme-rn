@@ -37,8 +37,11 @@ export const useAuth: UseAuthType = () => {
     dispatch(signUp(username, password));
 
   const onSubmit = ({ username, password }: AuthFormData) => {
-    if (isLogInContext) return handleLogin(username, password);
-    handleRegistration(username, password);
+    // TODO: remove before merge
+    console.log('username:', username);
+    console.log('password:', password);
+    // if (isLogInContext) return handleLogin(username, password);
+    // handleRegistration(username, password);
   };
 
   // TODO: could be used for try count validation (=== 5, block form for some time)
