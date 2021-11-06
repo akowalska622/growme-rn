@@ -16,6 +16,6 @@ export default StyleSheet.create({
     margin: ESpacing.regular,
   },
   padding: {
-    margin: ESpacing.regular,
+    padding: ESpacing.regular,
   },
 });
