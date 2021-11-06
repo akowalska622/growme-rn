@@ -3,7 +3,9 @@ import { Button, Text, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+// TODO: change to absolute imports
 import { FormInput } from '../../ui/FormInput';
+import { Screen } from '../../ui/Screen';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -19,6 +21,7 @@ export interface AuthFormData {
   confirmPassword: string;
 }
 
+// TODO: use Grid and text components
 export const AuthScreen = () => {
   const {
     additionalInfo,
@@ -49,7 +52,7 @@ export const AuthScreen = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <Screen>
       <View style={styles.signInContainer}>
         <FormInput
           label="E-mail"
@@ -82,6 +85,6 @@ export const AuthScreen = () => {
         <Text>{additionalInfo}</Text>
         <Button title={secondaryButtonTitle} onPress={changeContext} />
       </View>
-    </View>
+    </Screen>
   );
 };
