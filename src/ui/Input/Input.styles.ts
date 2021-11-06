@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 
 import { Spacing, Typography } from 'Constants';
+import { useCustomTheme } from '../../hooks/useTheme';
 
 export const styles = () => {
-  const { colors } = useTheme();
+  const { colors } = useCustomTheme();
   const paddingLeft = 15;
 
   return StyleSheet.create({
@@ -32,7 +32,7 @@ export const styles = () => {
       color: colors.notification,
     },
     label: {
-      color: 'grey', // TODO: fix `disabled` color
+      color: colors.disabled,
       position: 'absolute',
       zIndex: 1,
     },

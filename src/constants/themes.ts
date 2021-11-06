@@ -2,26 +2,22 @@ import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 
 import { EBaseColors } from './colors';
 
-// DarkTheme: background, cards, border
-// additionally: disabled: EBaseColors.lightGrey,
+// from DarkTheme: background, cards, border
 const darkTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    disabled: EBaseColors.lightGrey,
     notification: EBaseColors.orange,
     primary: EBaseColors.green,
     text: EBaseColors.white,
   },
 };
 
-// DefaultTheme: background, cards, border
-// additionally: disabled: EBaseColors.darkGrey,
+// from DefaultTheme: background, cards, border
 const lightTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    disabled: EBaseColors.lightGrey,
     notification: EBaseColors.orange,
     primary: EBaseColors.green,
     text: EBaseColors.darkGrey,
