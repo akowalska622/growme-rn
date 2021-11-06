@@ -1,4 +1,5 @@
 import { Control, useController } from 'react-hook-form';
+import { Ionicons } from '@expo/vector-icons';
 import { TextInputProps } from 'react-native';
 
 import { Input } from './Input';
@@ -6,6 +7,8 @@ import { Input } from './Input';
 interface IFormInputProps {
   control: Control<any, object>; // TODO: fix any type
   defaultValue?: string;
+  icon?: keyof typeof Ionicons.glyphMap;
+  onIconPress?: () => void;
   label: string;
   name: string;
 }

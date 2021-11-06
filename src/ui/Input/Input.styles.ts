@@ -4,7 +4,8 @@ import { EFontSizes } from 'Constants/typography';
 import { Spacing } from 'Constants';
 import { useCustomTheme } from '../../hooks/useTheme';
 
-const inputPaddingLeft = 15;
+const inputHorizontalPadding = 15;
+const inputHeight = 50;
 
 export const getLabelStyles = (labelAnimation: Animated.Value) => {
   const { colors } = useCustomTheme();
@@ -18,14 +19,14 @@ export const getLabelStyles = (labelAnimation: Animated.Value) => {
   return {
     fontSize: interpolate([EFontSizes.body, EFontSizes.subhead]),
     color: colors.disabled,
-    left: interpolate([inputPaddingLeft, 0]),
+    left: interpolate([inputHorizontalPadding, 0]),
     position: 'absolute',
     top: interpolate([15, -18]),
     zIndex: 1,
   };
 };
 
-export const getStyles = (isValid: boolean) => {
+export const getStyles = (isValid: boolean, isIcon: boolean) => {
   const { colors } = useCustomTheme();
 
   return StyleSheet.create({
@@ -43,9 +44,22 @@ export const getStyles = (isValid: boolean) => {
       borderTopLeftRadius: 5,
       borderTopRightRadius: 5,
       color: colors.text,
-      height: 50,
-      paddingLeft: inputPaddingLeft,
+      height: inputHeight,
+      paddingLeft: inputHorizontalPadding,
+      paddingRight: isIcon ? inputHeight : inputHorizontalPadding,
       width: 250,
+    },
+    iconWrapper: {
+      alignItems: 'center',
+      height: inputHeight,
+      justifyContent: 'center',
+      position: 'absolute',
+      right: 0,
+      width: inputHeight,
+    },
+    icon: {
+      color: colors.text,
+      fontSize: EFontSizes.titleTwo,
     },
   });
 };

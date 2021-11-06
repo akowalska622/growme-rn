@@ -8,6 +8,7 @@ import { FormInput } from '../../ui/FormInput';
 import { Screen } from '../../ui/Screen';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
+import { useShowSecret } from '../../hooks/useShowSecret';
 
 enum EAuthScreenFields {
   username = 'username',
@@ -50,6 +51,13 @@ export const AuthScreen = () => {
     resolver: yupResolver(authSchema),
   });
 
+  const { showSecret: showPassword, toggleSecret: togglePassword } =
+    useShowSecret();
+  const {
+    showSecret: showConfirmPassword,
+    toggleSecret: toggleConfirmPassword,
+  } = useShowSecret();
+
   return (
     <Screen>
       <View style={styles.signInContainer}>
@@ -62,16 +70,20 @@ export const AuthScreen = () => {
           label="Password"
           autoCorrect={false}
           control={control}
+          icon={showPassword ? 'ios-eye-off' : 'ios-eye'}
           name={EAuthScreenFields.password}
-          secureTextEntry
+          onIconPress={togglePassword}
+          secureTextEntry={!showPassword}
         />
         {!isLogInContext && (
           <FormInput
             label="Confirm password"
             autoCorrect={false}
             control={control}
+            icon={showConfirmPassword ? 'ios-eye-off' : 'ios-eye'}
             name={EAuthScreenFields.confirmPassword}
-            secureTextEntry
+            onIconPress={toggleConfirmPassword}
+            secureTextEntry={!showConfirmPassword}
           />
         )}
         <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
