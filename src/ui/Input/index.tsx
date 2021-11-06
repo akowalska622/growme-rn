@@ -24,6 +24,7 @@ export const Input = ({
 }: IInputProps & TextInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
+  const style = styles();
   const isError = !!error;
 
   const handleOnFocus = () => setIsFocused(true);
@@ -34,11 +35,11 @@ export const Input = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={style.container}>
       <Text
         style={[
-          styles.label,
-          isFocused || value ? styles.labelAbove : styles.placeholder,
+          style.label,
+          isFocused || value ? style.labelOnFocus : style.placeholder,
         ]}
       >
         {label}
@@ -46,13 +47,16 @@ export const Input = ({
       <TextInput
         {...props}
         ref={inputRef}
-        style={[styles.textInput, isError ? styles.errorInput : {}]}
+        style={[
+          style.textInput,
+          isError ? style.invalidInput : style.validInput,
+        ]}
         onChangeText={onChange}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
         value={value}
       />
-      {isError && <Text style={styles.errorMessage}>{error}</Text>}
+      {isError && <Text style={style.errorMessage}>{error}</Text>}
     </View>
   );
 };
