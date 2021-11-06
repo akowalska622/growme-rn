@@ -55,14 +55,12 @@ export const AuthScreen = () => {
           label="E-mail"
           control={control}
           name={EAuthScreenFields.username}
-          placeholder="E-mail"
         />
         <FormInput
           label="Password"
           autoCorrect={false}
           control={control}
           name={EAuthScreenFields.password}
-          placeholder="Password"
           secureTextEntry
         />
         {!isLogInContext && (
@@ -71,7 +69,6 @@ export const AuthScreen = () => {
             autoCorrect={false}
             control={control}
             name={EAuthScreenFields.confirmPassword}
-            placeholder="Confirm password"
             secureTextEntry
           />
         )}
