@@ -1,8 +1,8 @@
+import { Animated, Text, TextInput, TextInputProps, View } from 'react-native';
 import { RefCallBack } from 'react-hook-form';
-import { Text, TextInput, TextInputProps, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { styles } from './Input.styles';
+import { getLabelStyles, getStyles } from './Input.styles';
 
 interface IInputProps {
   inputRef: RefCallBack;
@@ -24,8 +24,10 @@ export const Input = ({
 }: IInputProps & TextInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const style = styles();
   const isError = !!error;
+  const labelAnimated = new Animated.Value(value ? 1 : 0);
+  const labelStyles = getLabelStyles(labelAnimated);
+  const styles = getStyles(!isError);
 
   const handleOnFocus = () => setIsFocused(true);
 
@@ -34,29 +36,31 @@ export const Input = ({
     onBlur();
   };
 
+  useEffect(
+    () =>
+      Animated.timing(labelAnimated, {
+        duration: 200,
+        toValue: isFocused || value ? 1 : 0,
+        useNativeDriver: false,
+      }).start(),
+    [isFocused, value],
+  );
+
   return (
-    <View style={style.container}>
-      <Text
-        style={[
-          style.label,
-          isFocused || value ? style.labelOnFocus : style.placeholder,
-        ]}
-      >
+    <View style={styles.inputWrapper}>
+      <Animated.Text style={labelStyles} onPress={() => console.log('hello')}>
         {label}
-      </Text>
+      </Animated.Text>
       <TextInput
         {...props}
         ref={inputRef}
-        style={[
-          style.textInput,
-          isError ? style.invalidInput : style.validInput,
-        ]}
+        style={styles.textInput}
         onChangeText={onChange}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
         value={value}
       />
-      {isError && <Text style={style.errorMessage}>{error}</Text>}
+      {isError && <Text style={styles.errorMessage}>{error}</Text>}
     </View>
   );
 };

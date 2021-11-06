@@ -7,7 +7,7 @@ enum EFontWeights {
   bold = '700',
 }
 
-enum EFontSizes {
+export enum EFontSizes {
   titleOne = 27,
   titleTwo = 21,
   titleThree = 19,
