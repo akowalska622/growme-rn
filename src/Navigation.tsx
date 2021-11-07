@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 import { AuthScreen } from 'Screens/AuthScreen';
 import { HomeScreen } from 'Screens/HomeScreen';
+import { LinksScreen } from 'Screens/LinksScreen';
 import { ProfileScreen } from 'Screens/ProfileScreen';
 
 import { darkTheme, lightTheme } from 'Constants/themes';
@@ -22,8 +23,9 @@ export const Navigation = () => {
     <NavigationContainer theme={scheme === 'dark' ? darkTheme : lightTheme}>
       {isSignedIn ? (
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Profile" component={ProfileScreen} />
+          <Tab.Screen name="Home" component={HomeScreen} />
+          {__DEV__ && <Tab.Screen name="Storybook" component={LinksScreen} />}
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
