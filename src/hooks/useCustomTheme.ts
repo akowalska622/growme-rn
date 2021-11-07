@@ -7,3 +7,5 @@ export const useCustomTheme = () => {
   const colors = { ...theme.colors, disabled: EBaseColors.lightGrey, placeholder: EBaseColors.lightGrey }
   return { ...theme, colors };
 }
+
+export type ColorType = keyof ReturnType<typeof useCustomTheme>['colors'];
