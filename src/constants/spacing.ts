@@ -12,7 +12,10 @@ export default StyleSheet.create({
   margin: {
     margin: ESpacing.regular,
   },
-  padding: {
+  marginVertical: {
     margin: ESpacing.regular,
+  },
+  padding: {
+    padding: ESpacing.regular,
   },
 });

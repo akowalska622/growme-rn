@@ -3,9 +3,12 @@ import { Button, Text, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+// TODO: change to absolute imports
 import { FormInput } from '../../ui/FormInput';
+import { Screen } from '../../ui/Screen';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
+import { useShowSecret } from '../../hooks/useShowSecret';
 
 enum EAuthScreenFields {
   username = 'username',
@@ -19,6 +22,7 @@ export interface AuthFormData {
   confirmPassword: string;
 }
 
+// TODO: use Grid and text components
 export const AuthScreen = () => {
   const {
     additionalInfo,
@@ -47,8 +51,15 @@ export const AuthScreen = () => {
     resolver: yupResolver(authSchema),
   });
 
+  const { showSecret: showPassword, toggleSecret: togglePassword } =
+    useShowSecret();
+  const {
+    showSecret: showConfirmPassword,
+    toggleSecret: toggleConfirmPassword,
+  } = useShowSecret();
+
   return (
-    <View style={styles.container}>
+    <Screen>
       <View style={styles.signInContainer}>
         <FormInput
           label="E-mail"
@@ -59,28 +70,29 @@ export const AuthScreen = () => {
           label="Password"
           autoCorrect={false}
           control={control}
+          icon={showPassword ? 'ios-eye-off' : 'ios-eye'}
           name={EAuthScreenFields.password}
-          secureTextEntry
+          onIconPress={togglePassword}
+          secureTextEntry={!showPassword}
         />
         {!isLogInContext && (
           <FormInput
             label="Confirm password"
             autoCorrect={false}
             control={control}
+            icon={showConfirmPassword ? 'ios-eye-off' : 'ios-eye'}
             name={EAuthScreenFields.confirmPassword}
-            secureTextEntry
+            onIconPress={toggleConfirmPassword}
+            secureTextEntry={!showConfirmPassword}
           />
         )}
-        <Button
-          title={primaryButtonTitle}
-          onPress={handleSubmit(onSubmit)}
-        />
+        <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
         {isLogInContext && <Text>I forgot my password.</Text>}
       </View>
       <View style={styles.switchContextContainer}>
         <Text>{additionalInfo}</Text>
         <Button title={secondaryButtonTitle} onPress={changeContext} />
       </View>
-    </View>
+    </Screen>
   );
 };
