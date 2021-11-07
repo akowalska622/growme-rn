@@ -32,6 +32,7 @@ export const getStyles = (isValid: boolean, isIcon: boolean) => {
   return StyleSheet.create({
     errorMessage: {
       color: colors.notification,
+      top: 1,
     },
     inputWrapper: {
       ...Spacing.marginVertical,
