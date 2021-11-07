@@ -10,10 +10,10 @@ import { Text } from '../../ui/Text';
 import { colorKeys } from 'Constants/colors';
 import { fontKeys } from 'Constants/typography';
 
-storiesOf('Text', module)
+storiesOf('Typography', module)
   .addDecorator(withKnobs)
   .addDecorator((story) => <Screen>{story()}</Screen>)
-  .add('base', () => {
+  .add('Text', () => {
     const variant = options('variant', fontKeys, 'body', { display: 'select' });
     const color = options('color', colorKeys, 'text', { display: 'select' });
   
