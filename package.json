@@ -49,6 +49,7 @@
     "@storybook/addons": "^6.3.12",
     "@storybook/react-native": "^5.3.25",
     "@storybook/react-native-server": "^5.3.23",
+    "@testing-library/react-native": "^8.0.0",
     "@types/jest": "^27.0.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
@@ -65,8 +66,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "jest": "^27.3.1",
+    "jest-expo": "^43.0.1",
     "prettier": "^2.4.1",
     "react-native-storybook-loader": "^2.0.4",
+    "react-test-renderer": "^17.0.2",
     "typescript": "~4.3.5"
   },
   "private": true,
@@ -75,5 +78,8 @@
       "pattern": "**/*.stories.tsx",
       "outputFile": "./storybook/storyLoader.js"
     }
+  },
+  "jest": {
+    "preset": "jest-expo"
   }
 }
