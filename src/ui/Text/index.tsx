@@ -1,6 +1,6 @@
 import { Text as RNText } from 'react-native';
 
-import { ColorType } from '../../hooks/useCustomTheme';
+import { ColorType } from 'Constants/colors';
 import { EFontSizes } from 'Constants/typography';
 import { getStyles } from './Text.styles';
 

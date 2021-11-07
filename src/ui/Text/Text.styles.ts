@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { ColorType, useCustomTheme } from '../../hooks/useCustomTheme';
+import { ColorType } from 'Constants/colors';
 import { EFontSizes, EFontWeights } from 'Constants/typography';
+import { useCustomTheme } from '../../hooks/useCustomTheme';
 
 export const getStyles = (color: ColorType) => {
   const { colors } = useCustomTheme();

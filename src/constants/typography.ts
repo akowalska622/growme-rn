@@ -16,3 +16,15 @@ export enum EFontSizes {
   footnote = 12,
   caption = 11,
 }
+
+export const fontKeys = {
+  titleOne: 'titleOne',
+  titleTwo: 'titleTwo',
+  titleThree: 'titleThree',
+  headline: 'headline',
+  body: 'body',
+  callout: 'callout',
+  subhead: 'subhead',
+  footnote: 'footnote',
+  caption: 'caption',
+}
