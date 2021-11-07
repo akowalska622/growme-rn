@@ -4,4 +4,5 @@ export enum EBaseColors {
   lightGrey = '#BBBBBB',
   orange = '#E59112',
   white = '#F3F3F3',
+  lightGreen = '#438d58',
 }
