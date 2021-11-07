@@ -2,25 +2,22 @@ import { TEST_PASSWORD, TEST_USERNAME } from 'react-native-dotenv';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
+import { AuthFormData } from 'Screens/AuthScreen';
 import { EAuthContext } from '../enums/EAuthContext';
-import { authContextMap } from 'Screens/AuthScreen.constants';
+import { authContextMap } from 'Screens/AuthScreen/AuthScreen.constants';
 import { signIn } from '../redux/auth/actions/signInActions';
 import { signUp } from '../redux/auth/actions/signUpActions';
 
-type UseAuthType = (
-  username: string,
-  password: string,
-  repeatedPassword: string,
-) => {
+type UseAuthType = () => {
   additionalInfo: string;
   changeContext: () => void;
-  handlePrimaryButtonPress: () => void;
   isLogInContext: boolean;
+  onSubmit: ({ username, password }: AuthFormData) => void;
   primaryButtonTitle: string;
   secondaryButtonTitle: string;
 };
 
-export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
+export const useAuth: UseAuthType = () => {
   const dispatch = useDispatch();
 
   const [context, setContext] = useState(EAuthContext.SIGN_IN);
@@ -32,16 +29,15 @@ export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
 
   const changeContext = () => setContext(getSecondContext());
 
-  const handleLogin = () => dispatch(signIn(username, password));
+  const handleLogin = (username: string, password: string) =>
+    dispatch(signIn(username, password));
 
-  const handleRegistration = () =>
-    username &&
-    password === repeatedPassword &&
+  const handleRegistration = (username: string, password: string) =>
     dispatch(signUp(username, password));
 
-  const handlePrimaryButtonPress = () => {
-    if (isLogInContext) return handleLogin();
-    handleRegistration();
+  const onSubmit = ({ username, password }: AuthFormData) => {
+    if (isLogInContext) return handleLogin(username, password);
+    handleRegistration(username, password);
   };
 
   useEffect(() => {
@@ -54,8 +50,8 @@ export const useAuth: UseAuthType = (username, password, repeatedPassword) => {
   return {
     additionalInfo: authContextMap[getSecondContext()].info,
     changeContext,
-    handlePrimaryButtonPress,
     isLogInContext,
+    onSubmit,
     primaryButtonTitle: authContextMap[context].buttonTitle,
     secondaryButtonTitle: authContextMap[getSecondContext()].buttonTitle,
   };
