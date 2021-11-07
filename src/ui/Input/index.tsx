@@ -13,7 +13,7 @@ import { Text } from '../../ui/Text';
 import { getLabelStyles, getStyles } from './Input.styles';
 
 interface IInputProps {
-  inputRef: RefCallBack;
+  refCallback: RefCallBack;
   error: string | void;
   icon?: keyof typeof Ionicons.glyphMap;
   label: string;
@@ -24,7 +24,7 @@ interface IInputProps {
 }
 
 export const Input = ({
-  inputRef,
+  refCallback,
   error,
   icon,
   label,
@@ -34,6 +34,8 @@ export const Input = ({
   value,
   ...props
 }: IInputProps & TextInputProps) => {
+  let inputRef: TextInput | null;
+
   const [isFocused, setIsFocused] = useState(false);
 
   const isError = !!error;
@@ -48,6 +50,8 @@ export const Input = ({
     onBlur();
   };
 
+  const handleLabelOnPress = () => inputRef?.focus();
+
   useEffect(
     () =>
       Animated.timing(labelAnimatedValue, {
@@ -60,12 +64,18 @@ export const Input = ({
 
   return (
     <View style={styles.inputWrapper}>
-      <Animated.Text style={[styles.label, labelAnimation]} onPress={() => console.log('hello')}>
+      <Animated.Text
+        style={[styles.label, labelAnimation]}
+        onPress={handleLabelOnPress}
+      >
         {label}
       </Animated.Text>
       <TextInput
         {...props}
-        ref={inputRef}
+        ref={(ref) => {
+          inputRef = ref;
+          refCallback(ref);
+        }}
         style={styles.textInput}
         onChangeText={onChange}
         onFocus={handleOnFocus}
@@ -77,7 +87,11 @@ export const Input = ({
           <Ionicons name={icon} style={styles.icon} />
         </TouchableOpacity>
       )}
-      {isError && <Text variant="subhead" color="notification">{error}</Text>}
+      {isError && (
+        <Text variant="subhead" color="notification">
+          {error}
+        </Text>
+      )}
     </View>
   );
 };

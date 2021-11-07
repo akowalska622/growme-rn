@@ -32,7 +32,7 @@ export const FormInput = ({
   return (
     <Input
       {...props}
-      inputRef={ref}
+      refCallback={ref}
       defaultValue={defaultValue}
       error={error?.message}
       label={label}
