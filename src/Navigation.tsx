@@ -10,18 +10,18 @@ import { LinksScreen } from 'Screens/LinksScreen';
 import { ProfileScreen } from 'Screens/ProfileScreen';
 
 import { darkTheme, lightTheme } from 'Constants/themes';
-import { isSignedInSelector } from './redux/auth/authSelectors';
+import { selectAuthenticated } from 'Redux/auth/authSelectors';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
-  const isSignedIn = useSelector(isSignedInSelector);
+  const authenticated = useSelector(selectAuthenticated);
   const scheme = useColorScheme();
 
   return (
     <NavigationContainer theme={scheme === 'dark' ? darkTheme : lightTheme}>
-      {isSignedIn ? (
+      {authenticated ? (
         <Tab.Navigator>
           <Tab.Screen name="Profile" component={ProfileScreen} />
           <Tab.Screen name="Home" component={HomeScreen} />

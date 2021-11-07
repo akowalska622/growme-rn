@@ -3,13 +3,13 @@ import produce from 'immer';
 import { EAuthTypes } from 'Redux/auth/authTypes';
 
 interface IAuthState {
-  readonly isSignedIn: boolean;
+  readonly authenticated: boolean;
   readonly user: Object | null; // TODO: fix user type
   readonly error: string;
 }
 
 const initialState: IAuthState = {
-  isSignedIn: false,
+  authenticated: false,
   user: null,
   error: '',
 };
@@ -19,7 +19,7 @@ export const authReducer = produce((draftState, { type, payload, error }) => {
     case EAuthTypes.SIGN_IN_SUCCESS:
     case EAuthTypes.SIGN_UP_SUCCESS:
       draftState.user = payload;
-      draftState.isSignedIn = true;
+      draftState.authenticated = true;
       draftState.error = '';
       break;
     case EAuthTypes.SIGN_IN_FAILURE:
@@ -29,7 +29,7 @@ export const authReducer = produce((draftState, { type, payload, error }) => {
       break;
     case EAuthTypes.SIGN_OUT_SUCCESS:
       draftState.user = null;
-      draftState.isSignedIn = false;
+      draftState.authenticated = false;
       draftState.error = '';
       break;
     case EAuthTypes.SIGN_OUT_FAILURE:
