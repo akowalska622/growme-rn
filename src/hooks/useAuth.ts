@@ -36,20 +36,16 @@ export const useAuth: UseAuthType = () => {
     dispatch(signUp(username, password));
 
   const onSubmit = ({ username, password }: AuthFormData) => {
-    // TODO: remove before merge
-    console.log('username:', username);
-    console.log('password:', password);
-    // if (isLogInContext) return handleLogin(username, password);
-    // handleRegistration(username, password);
+    if (isLogInContext) return handleLogin(username, password);
+    handleRegistration(username, password);
   };
 
-  // TODO: uncomment before merge
-  /* useEffect(() => {
+  useEffect(() => {
     const testUsername = String(TEST_USERNAME);
     const testPassword = String(TEST_PASSWORD);
     if (__DEV__ && testUsername && testPassword)
       dispatch(signIn(testUsername, testPassword));
-  }, []); */
+  }, []);
 
   return {
     additionalInfo: authContextMap[getSecondContext()].info,
