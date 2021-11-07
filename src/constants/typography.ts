@@ -28,3 +28,5 @@ export const fontKeys = {
   footnote: 'footnote',
   caption: 'caption',
 }
+
+export type FontSizeType = keyof typeof fontKeys;

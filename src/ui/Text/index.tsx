@@ -1,13 +1,13 @@
 import { Text as RNText } from 'react-native';
 
 import { ColorType } from 'Constants/colors';
-import { EFontSizes } from 'Constants/typography';
+import { FontSizeType } from 'Constants/typography';
 import { getStyles } from './Text.styles';
 
 interface ITextProps {
   children: string;
   color?: ColorType;
-  variant?: keyof typeof EFontSizes;
+  variant?: FontSizeType;
 }
 
 export const Text = ({
