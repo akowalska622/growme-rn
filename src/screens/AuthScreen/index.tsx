@@ -83,7 +83,6 @@ export const AuthScreen = () => {
           />
         )}
         <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
-        {isLogInContext && <Text>I forgot my password.</Text>}
       </View>
       <View style={styles.switchContextContainer}>
         <Text>{additionalInfo}</Text>
