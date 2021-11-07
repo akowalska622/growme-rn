@@ -8,7 +8,7 @@ import { FormInput } from '../../ui/FormInput';
 import { Screen } from '../../ui/Screen';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
-import { useShowSecret } from '../../hooks/useShowSecret';
+import { useToggle } from '../../hooks/useToggle';
 
 enum EAuthScreenFields {
   username = 'username',
@@ -51,12 +51,8 @@ export const AuthScreen = () => {
     resolver: yupResolver(authSchema),
   });
 
-  const { showSecret: showPassword, toggleSecret: togglePassword } =
-    useShowSecret();
-  const {
-    showSecret: showConfirmPassword,
-    toggleSecret: toggleConfirmPassword,
-  } = useShowSecret();
+  const [showPassword, togglePassword] = useToggle();
+  const [showConfirmPassword, toggleConfirmPassword] = useToggle();
 
   return (
     <Screen>
