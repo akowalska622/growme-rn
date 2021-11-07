@@ -12,7 +12,6 @@ type UseAuthType = () => {
   additionalInfo: string;
   changeContext: () => void;
   isLogInContext: boolean;
-  onInvalid: (errors: Object) => void;
   onSubmit: ({ username, password }: AuthFormData) => void;
   primaryButtonTitle: string;
   secondaryButtonTitle: string;
@@ -37,29 +36,21 @@ export const useAuth: UseAuthType = () => {
     dispatch(signUp(username, password));
 
   const onSubmit = ({ username, password }: AuthFormData) => {
-    // TODO: remove before merge
-    console.log('username:', username);
-    console.log('password:', password);
-    // if (isLogInContext) return handleLogin(username, password);
-    // handleRegistration(username, password);
+    if (isLogInContext) return handleLogin(username, password);
+    handleRegistration(username, password);
   };
 
-  // TODO: could be used for try count validation (=== 5, block form for some time)
-  const onInvalid = (errors: Object) => console.log(errors);
-
-  // TODO: uncomment before merge
-  /* useEffect(() => {
+  useEffect(() => {
     const testUsername = String(TEST_USERNAME);
     const testPassword = String(TEST_PASSWORD);
     if (__DEV__ && testUsername && testPassword)
       dispatch(signIn(testUsername, testPassword));
-  }, []); */
+  }, []);
 
   return {
     additionalInfo: authContextMap[getSecondContext()].info,
     changeContext,
     isLogInContext,
-    onInvalid,
     onSubmit,
     primaryButtonTitle: authContextMap[context].buttonTitle,
     secondaryButtonTitle: authContextMap[getSecondContext()].buttonTitle,
