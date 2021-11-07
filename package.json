@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
     "test": "jest",
+    "test:coverage": "open './coverage/lcov-report/index.html'",
     "prestorybook": "rnstl",
     "storybook": "start-storybook -p 7007 -h 192.168.1.6",
     "build-storybook": "build-storybook"
@@ -80,6 +81,20 @@
     }
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/config",
+      "/src/constants",
+      "/src/enums",
+      "/src/redux/store",
+      "/src/types",
+      "/storybook",
+      "babel.config.js"
+    ]
   }
 }
