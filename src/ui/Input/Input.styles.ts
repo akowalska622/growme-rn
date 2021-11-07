@@ -2,7 +2,7 @@ import { Animated, StyleSheet } from 'react-native';
 
 import { EFontSizes } from 'Constants/typography';
 import { Spacing } from 'Constants';
-import { useCustomTheme } from '../../hooks/useCustomTheme';
+import { useCustomTheme } from 'Hooks/useCustomTheme';
 
 const inputHorizontalPadding = 15;
 const inputHeight = 50;

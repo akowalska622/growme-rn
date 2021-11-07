@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import { AuthFormData } from 'Screens/AuthScreen';
-import { EAuthContext } from '../enums/EAuthContext';
+import { EAuthContext } from 'Enums/EAuthContext';
 import { authContextMap } from 'Screens/AuthScreen/AuthScreen.constants';
-import { signIn } from '../redux/auth/actions/signInActions';
-import { signUp } from '../redux/auth/actions/signUpActions';
+import { signIn } from 'Redux/auth/actions/signInActions';
+import { signUp } from 'Redux/auth/actions/signUpActions';
 
 type UseAuthType = () => {
   additionalInfo: string;

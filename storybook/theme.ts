@@ -1,4 +1,4 @@
-import { EBaseColors } from '../src/constants/colors';
+import { EBaseColors } from 'Constants/colors';
 
 export const theme = {
   backgroundColor: EBaseColors.green,

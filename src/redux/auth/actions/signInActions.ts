@@ -1,7 +1,7 @@
-import { EAuthTypes } from '../authTypes';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import { auth } from '../../../config/firebase';
+import { EAuthTypes } from 'Redux/auth/authTypes';
+import { auth } from 'Config/firebase';
 
 const signInAction = () => ({
   type: EAuthTypes.SIGN_IN,

@@ -1,8 +1,8 @@
 import { Button } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { Screen } from '../ui/Screen';
-import { signOut } from '../redux/auth/actions/signOutActions';
+import { Screen } from 'UI/Screen';
+import { signOut } from 'Redux/auth/actions/signOutActions';
 
 export const ProfileScreen = () => {
   const dispatch = useDispatch();

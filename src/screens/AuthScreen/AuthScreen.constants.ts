@@ -1,4 +1,4 @@
-import { EAuthContext } from '../../enums/EAuthContext';
+import { EAuthContext } from 'Enums/EAuthContext';
 
 export const authContextMap = {
   [EAuthContext.SIGN_IN]: {

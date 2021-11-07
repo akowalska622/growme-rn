@@ -5,8 +5,8 @@ import {
 } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
 
-import { Screen } from '../../ui/Screen';
-import { Text } from '../../ui/Text';
+import { Screen } from 'UI/Screen';
+import { Text } from 'UI/Text';
 import { colorKeys } from 'Constants/colors';
 import { fontKeys } from 'Constants/typography';
 

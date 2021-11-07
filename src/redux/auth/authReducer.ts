@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-import { EAuthTypes } from './authTypes';
+import { EAuthTypes } from 'Redux/auth/authTypes';
 
 interface IAuthState {
   readonly isSignedIn: boolean;

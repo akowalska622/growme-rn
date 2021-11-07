@@ -3,13 +3,12 @@ import { Button, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-// TODO: change to absolute imports
-import { FormInput } from '../../ui/FormInput';
-import { Screen } from '../../ui/Screen';
-import { Text } from '../../ui/Text';
+import { FormInput } from 'UI/FormInput';
+import { Screen } from 'UI/Screen';
+import { Text } from 'UI/Text';
 import { styles } from './AuthScreen.styles';
-import { useAuth } from '../../hooks/useAuth';
-import { useToggle } from '../../hooks/useToggle';
+import { useAuth } from 'Hooks/useAuth';
+import { useToggle } from 'Hooks/useToggle';
 
 enum EAuthScreenFields {
   username = 'username',

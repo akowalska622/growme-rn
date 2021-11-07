@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { RefCallBack } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 
-import { Text } from '../../ui/Text';
+import { Text } from 'UI/Text';
 import { getLabelStyles, getStyles } from './Input.styles';
 
 interface IInputProps {

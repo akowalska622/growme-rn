@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react-native';
 
-import { Input } from '.';
-import { Screen } from '../Screen';
+import { Input } from 'UI/Input';
+import { Screen } from 'UI/Screen';
 
 const actions = {
-  inputRef: () => {},
+  refCallback: () => {},
   onBlur: action('onBlur'),
   onChange: action('onChange'),
   onIconPress: action('onIconPress'),

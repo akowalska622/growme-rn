@@ -1,5 +1,5 @@
-import { Screen } from '../ui/Screen';
-import { Text } from '../ui/Text';
+import { Screen } from 'UI/Screen';
+import { Text } from 'UI/Text';
 
 export const HomeScreen = () => {
   return (
