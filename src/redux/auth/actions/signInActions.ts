@@ -8,13 +8,13 @@ const signInAction = () => ({
 })
 
 // TODO: fix response type
-const signInSuccessfullyAction = (response: any) => ({
+export const signInSuccessfullyAction = (response: any) => ({
   type: EAuthTypes.SIGN_IN_SUCCESS,
   payload: response,
 });
 
 // TODO: fix error type
-const signInUnsuccessfullyAction = (error: any) => ({
+export const signInUnsuccessfullyAction = (error: any) => ({
   type: EAuthTypes.SIGN_IN_FAILURE,
   error,
 });

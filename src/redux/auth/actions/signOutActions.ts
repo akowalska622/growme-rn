@@ -8,12 +8,12 @@ const signOutAction = () => ({
 });
 
 // TODO: fix response type
-const signOutSuccessfullyAction = () => ({
+export const signOutSuccessfullyAction = () => ({
   type: EAuthTypes.SIGN_OUT_SUCCESS,
 });
 
 // TODO: fix error type
-const signOutUnsuccessfullyAction = (error: any) => ({
+export const signOutUnsuccessfullyAction = (error: any) => ({
   type: EAuthTypes.SIGN_OUT_FAILURE,
   error,
 });

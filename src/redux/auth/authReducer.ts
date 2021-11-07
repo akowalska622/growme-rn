@@ -20,17 +20,14 @@ export const authReducer = produce((draftState, { type, payload, error }) => {
     case EAuthTypes.SIGN_UP_SUCCESS:
       draftState.user = payload;
       draftState.isAuthenticated = true;
-      draftState.error = '';
       break;
     case EAuthTypes.SIGN_IN_FAILURE:
     case EAuthTypes.SIGN_UP_FAILURE:
-      draftState.user = null;
       draftState.error = error;
       break;
     case EAuthTypes.SIGN_OUT_SUCCESS:
       draftState.user = null;
       draftState.isAuthenticated = false;
-      draftState.error = '';
       break;
     case EAuthTypes.SIGN_OUT_FAILURE:
       draftState.error = error;
