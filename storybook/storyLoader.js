@@ -5,9 +5,13 @@
 
 function loadStories() {
   require('../src/ui/Input/Input.stories');
+  require('../src/ui/Text/Text.stories');
 }
 
-const stories = ['../src/ui/Input/Input.stories'];
+const stories = [
+  '../src/ui/Input/Input.stories',
+  '../src/ui/Text/Text.stories',
+];
 
 module.exports = {
   loadStories,

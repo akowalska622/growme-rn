@@ -2,27 +2,22 @@ import { Animated, StyleSheet } from 'react-native';
 
 import { EFontSizes } from 'Constants/typography';
 import { Spacing } from 'Constants';
-import { useCustomTheme } from '../../hooks/useTheme';
+import { useCustomTheme } from '../../hooks/useCustomTheme';
 
 const inputHorizontalPadding = 15;
 const inputHeight = 50;
 
-export const getLabelStyles = (labelAnimation: Animated.Value) => {
-  const { colors } = useCustomTheme();
-
+export const getLabelStyles = (labelAnimatedValue: Animated.Value) => {
   const interpolate = (outputRange: number[]) =>
-    labelAnimation.interpolate({
+    labelAnimatedValue.interpolate({
       inputRange: [0, 1],
       outputRange,
     });
 
   return {
     fontSize: interpolate([EFontSizes.body, EFontSizes.subhead]),
-    color: colors.disabled,
     left: interpolate([inputHorizontalPadding, 0]),
-    position: 'absolute',
     top: interpolate([15, -18]),
-    zIndex: 1,
   };
 };
 
@@ -30,10 +25,6 @@ export const getStyles = (isValid: boolean, isIcon: boolean) => {
   const { colors } = useCustomTheme();
 
   return StyleSheet.create({
-    errorMessage: {
-      color: colors.notification,
-      top: 1,
-    },
     inputWrapper: {
       ...Spacing.marginVertical,
       position: 'relative',
@@ -49,6 +40,11 @@ export const getStyles = (isValid: boolean, isIcon: boolean) => {
       paddingLeft: inputHorizontalPadding,
       paddingRight: isIcon ? inputHeight : inputHorizontalPadding,
       width: 250,
+    },
+    label: {
+      color: colors.disabled,
+      position: 'absolute',
+      zIndex: 1,
     },
     iconWrapper: {
       alignItems: 'center',

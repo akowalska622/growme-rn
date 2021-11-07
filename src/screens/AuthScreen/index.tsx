@@ -1,11 +1,12 @@
 import * as yup from 'yup';
-import { Button, Text, View } from 'react-native';
+import { Button, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 // TODO: change to absolute imports
 import { FormInput } from '../../ui/FormInput';
 import { Screen } from '../../ui/Screen';
+import { Text } from '../../ui/Text';
 import { styles } from './AuthScreen.styles';
 import { useAuth } from '../../hooks/useAuth';
 import { useToggle } from '../../hooks/useToggle';
@@ -85,7 +86,7 @@ export const AuthScreen = () => {
         <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
       </View>
       <View style={styles.switchContextContainer}>
-        <Text>{additionalInfo}</Text>
+        <Text variant="callout">{additionalInfo}</Text>
         <Button title={secondaryButtonTitle} onPress={changeContext} />
       </View>
     </Screen>

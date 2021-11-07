@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native';
+import { Screen } from '../ui/Screen';
+import { Text } from '../ui/Text';
 
 export const HomeScreen = () => {
   return (
-    <View>
+    <Screen>
       <Text>Home screen</Text>
-    </View>
+    </Screen>
   );
 };
