@@ -5,8 +5,13 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
+      "Config/*": ["./config/*"],
       "Constants/*": ["./constants/*"],
-      "Screens/*": ["./screens/*"]
+      "Enums/*": ["./enums/*"],
+      "Hooks/*": ["./hooks/*"],
+      "Redux/*": ["./redux/*"],
+      "Screens/*": ["./screens/*"],
+      "UI/*": ["./ui/*"]
     }
   }
 }
