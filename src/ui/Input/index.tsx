@@ -1,6 +1,5 @@
 import {
   Animated,
-  Text,
   TextInput,
   TextInputProps,
   TouchableOpacity,
@@ -10,6 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { RefCallBack } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 
+import { Text } from '../../ui/Text';
 import { getLabelStyles, getStyles } from './Input.styles';
 
 interface IInputProps {
@@ -37,8 +37,8 @@ export const Input = ({
   const [isFocused, setIsFocused] = useState(false);
 
   const isError = !!error;
-  const labelAnimated = new Animated.Value(value ? 1 : 0);
-  const labelStyles = getLabelStyles(labelAnimated);
+  const labelAnimatedValue = new Animated.Value(value ? 1 : 0);
+  const labelAnimation = getLabelStyles(labelAnimatedValue);
   const styles = getStyles(!isError, !!icon);
 
   const handleOnFocus = () => setIsFocused(true);
@@ -50,7 +50,7 @@ export const Input = ({
 
   useEffect(
     () =>
-      Animated.timing(labelAnimated, {
+      Animated.timing(labelAnimatedValue, {
         duration: 200,
         toValue: isFocused || value ? 1 : 0,
         useNativeDriver: false,
@@ -60,7 +60,7 @@ export const Input = ({
 
   return (
     <View style={styles.inputWrapper}>
-      <Animated.Text style={labelStyles} onPress={() => console.log('hello')}>
+      <Animated.Text style={[styles.label, labelAnimation]} onPress={() => console.log('hello')}>
         {label}
       </Animated.Text>
       <TextInput
@@ -77,7 +77,7 @@ export const Input = ({
           <Ionicons name={icon} style={styles.icon} />
         </TouchableOpacity>
       )}
-      {isError && <Text style={styles.errorMessage}>{error}</Text>}
+      {isError && <Text variant="subhead" color="notification">{error}</Text>}
     </View>
   );
 };
