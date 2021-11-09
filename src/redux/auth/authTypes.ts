@@ -1,13 +1,13 @@
 export enum EAuthTypes {
-  SIGN_IN = 'SIGN_IN',
-  SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS',
-  SIGN_IN_FAILURE = 'SIGN_IN_FAILURE',
+  signIn = 'SIGN_IN',
+  signInSuccess = 'SIGN_IN_SUCCESS',
+  signInFailure = 'SIGN_IN_FAILURE',
 
-  SIGN_UP = 'SIGN_UP',
-  SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS',
-  SIGN_UP_FAILURE = 'SIGN_UP_FAILURE',
+  signUp = 'SIGN_UP',
+  signUpSuccess = 'SIGN_UP_SUCCESS',
+  signUpFailure = 'SIGN_UP_FAILURE',
 
-  SIGN_OUT = 'SIGN_OUT',
-  SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS',
-  SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE',
+  signOut = 'SIGN_OUT',
+  signOutSuccess = 'SIGN_OUT_SUCCESS',
+  signOutFailure = 'SIGN_OUT_FAILURE',
 }

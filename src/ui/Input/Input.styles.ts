@@ -2,7 +2,6 @@ import { Animated, StyleSheet } from 'react-native';
 
 import { EFontSizes } from 'Constants/typography';
 import { Spacing } from 'Constants';
-import { useCustomTheme } from 'Hooks/useCustomTheme';
 
 const inputHorizontalPadding = 15;
 const inputHeight = 50;
@@ -21,10 +20,9 @@ export const getLabelStyles = (labelAnimatedValue: Animated.Value) => {
   };
 };
 
-export const getStyles = (isValid: boolean, isIcon: boolean) => {
-  const { colors } = useCustomTheme();
-
-  return StyleSheet.create({
+// TODO: fix colors type
+export const getStyles = (colors: any, isValid: boolean, isIcon: boolean) =>
+  StyleSheet.create({
     inputWrapper: {
       ...Spacing.marginVertical,
       position: 'relative',
@@ -59,4 +57,3 @@ export const getStyles = (isValid: boolean, isIcon: boolean) => {
       fontSize: EFontSizes.titleTwo,
     },
   });
-};

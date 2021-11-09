@@ -26,17 +26,17 @@ storiesOf('Input', module)
   .addDecorator((story) => <InputStage>{story()}</InputStage>)
   .add('default', () => <Input {...actions} {...input} label="Default input" />)
   .add('focused', () => (
-    <Input {...actions} {...input} value="Hello World" label="Focused input" />
+    <Input {...actions} {...input} label="Focused input" value="Hello World" />
   ))
   .add('invalid', () => (
     <Input
       {...actions}
       {...input}
       error="This field is required"
-      value="he"
       label="Invalid input"
+      value="he"
     />
   ))
   .add('icon', () => (
-    <Input {...actions} {...input} label="With icon" icon="crop" />
+    <Input {...actions} {...input} icon="crop" label="With icon" />
   ));

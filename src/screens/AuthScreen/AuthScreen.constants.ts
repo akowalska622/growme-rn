@@ -1,11 +1,11 @@
 import { EAuthContext } from 'Enums/EAuthContext';
 
 export const authContextMap = {
-  [EAuthContext.SIGN_IN]: {
+  [EAuthContext.signIn]: {
     info: 'You have an account?',
     buttonTitle: 'Sign in',
   },
-  [EAuthContext.SIGN_UP]: {
+  [EAuthContext.signUp]: {
     info: "You don't have an account?",
     buttonTitle: 'Sign up',
   },

@@ -16,9 +16,10 @@ storiesOf('Typography', module)
   .add('Text', () => {
     const variant = options('variant', fontKeys, 'body', { display: 'select' });
     const color = options('color', colorKeys, 'text', { display: 'select' });
-  
+
+    // TODO: fix color and variant errors
     return (
-      <Text variant={variant} color={color}>
+      <Text color={color} variant={variant}>
         {text('text', 'Hello World!')}
       </Text>
     );

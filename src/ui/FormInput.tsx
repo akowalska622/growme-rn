@@ -32,12 +32,12 @@ export const FormInput = ({
   return (
     <Input
       {...props}
-      refCallback={ref}
       defaultValue={defaultValue}
       error={error?.message}
       label={label}
       onBlur={onBlur}
       onChange={onChange}
+      refCallback={ref}
       value={value}
     />
   );

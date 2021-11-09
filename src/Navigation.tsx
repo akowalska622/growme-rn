@@ -23,15 +23,15 @@ export const Navigation = () => {
     <NavigationContainer theme={scheme === 'dark' ? darkTheme : lightTheme}>
       {isAuthenticated ? (
         <Tab.Navigator>
-          <Tab.Screen name="Profile" component={ProfileScreen} />
-          <Tab.Screen name="Home" component={HomeScreen} />
-          {__DEV__ && <Tab.Screen name="Storybook" component={LinksScreen} />}
+          <Tab.Screen component={ProfileScreen} name="Profile" />
+          <Tab.Screen component={HomeScreen} name="Home" />
+          {__DEV__ && <Tab.Screen component={LinksScreen} name="Storybook" />}
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
           <Stack.Screen
-            name="Authentication"
             component={AuthScreen}
+            name="Authentication"
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

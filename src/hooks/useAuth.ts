@@ -2,8 +2,8 @@ import { TEST_PASSWORD, TEST_USERNAME } from 'react-native-dotenv';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import { AuthFormData } from 'Screens/AuthScreen';
 import { EAuthContext } from 'Enums/EAuthContext';
+import { IAuthFormData } from 'Screens/AuthScreen';
 import { authContextMap } from 'Screens/AuthScreen/AuthScreen.constants';
 import { signIn } from 'Redux/auth/actions/signInActions';
 import { signUp } from 'Redux/auth/actions/signUpActions';
@@ -12,7 +12,7 @@ type UseAuthType = () => {
   additionalInfo: string;
   changeContext: () => void;
   isLogInContext: boolean;
-  onSubmit: ({ username, password }: AuthFormData) => void;
+  onSubmit: ({ username, password }: IAuthFormData) => void;
   primaryButtonTitle: string;
   secondaryButtonTitle: string;
 };
@@ -20,12 +20,12 @@ type UseAuthType = () => {
 export const useAuth: UseAuthType = () => {
   const dispatch = useDispatch();
 
-  const [context, setContext] = useState(EAuthContext.SIGN_IN);
+  const [context, setContext] = useState(EAuthContext.signIn);
 
-  const isLogInContext = context === EAuthContext.SIGN_IN;
+  const isLogInContext = context === EAuthContext.signIn;
 
   const getSecondContext = () =>
-    isLogInContext ? EAuthContext.SIGN_UP : EAuthContext.SIGN_IN;
+    isLogInContext ? EAuthContext.signUp : EAuthContext.signIn;
 
   const changeContext = () => setContext(getSecondContext());
 
@@ -35,7 +35,7 @@ export const useAuth: UseAuthType = () => {
   const handleRegistration = (username: string, password: string) =>
     dispatch(signUp(username, password));
 
-  const onSubmit = ({ username, password }: AuthFormData) => {
+  const onSubmit = ({ username, password }: IAuthFormData) => {
     if (isLogInContext) return handleLogin(username, password);
     handleRegistration(username, password);
   };
@@ -45,7 +45,7 @@ export const useAuth: UseAuthType = () => {
     const testPassword = String(TEST_PASSWORD);
     if (__DEV__ && testUsername && testPassword)
       dispatch(signIn(testUsername, testPassword));
-  }, []);
+  }, [dispatch]);
 
   return {
     additionalInfo: authContextMap[getSecondContext()].info,

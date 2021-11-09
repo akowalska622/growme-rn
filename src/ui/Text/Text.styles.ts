@@ -1,15 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { ColorType } from 'Constants/colors';
 import { EFontSizes, EFontWeights } from 'Constants/typography';
-import { useCustomTheme } from 'Hooks/useCustomTheme';
 
-export const getStyles = (color: ColorType) => {
-  const { colors } = useCustomTheme();
-
-  return StyleSheet.create({
+export const getStyles = (color: string) =>
+  StyleSheet.create({
     base: {
-      color: colors[color],
+      color,
     },
     titleOne: {
       fontWeight: EFontWeights.light,
@@ -48,4 +44,3 @@ export const getStyles = (color: ColorType) => {
       fontSize: EFontSizes.caption,
     },
   });
-};

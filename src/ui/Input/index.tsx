@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 
 import { Text } from 'UI/Text';
 import { getLabelStyles, getStyles } from './Input.styles';
+import { useCustomTheme } from 'Hooks/useCustomTheme';
 
 interface IInputProps {
   refCallback: RefCallBack;
@@ -38,10 +39,12 @@ export const Input = ({
 
   const [isFocused, setIsFocused] = useState(false);
 
+  const { colors } = useCustomTheme();
+
   const isError = !!error;
   const labelAnimatedValue = new Animated.Value(value ? 1 : 0);
   const labelAnimation = getLabelStyles(labelAnimatedValue);
-  const styles = getStyles(!isError, !!icon);
+  const styles = getStyles(colors, !isError, !!icon);
 
   const handleOnFocus = () => setIsFocused(true);
 
@@ -59,14 +62,16 @@ export const Input = ({
         toValue: isFocused || value ? 1 : 0,
         useNativeDriver: false,
       }).start(),
+    // TODO: check whether labelAnimatedValue can be in the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isFocused, value],
   );
 
   return (
     <View style={styles.inputWrapper}>
       <Animated.Text
-        style={[styles.label, labelAnimation]}
         onPress={handleLabelOnPress}
+        style={[styles.label, labelAnimation]}
       >
         {label}
       </Animated.Text>
@@ -76,19 +81,19 @@ export const Input = ({
           inputRef = ref;
           refCallback(ref);
         }}
-        style={styles.textInput}
+        onBlur={handleOnBlur}
         onChangeText={onChange}
         onFocus={handleOnFocus}
-        onBlur={handleOnBlur}
+        style={styles.textInput}
         value={value}
       />
       {icon && (
-        <TouchableOpacity style={styles.iconWrapper} onPress={onIconPress}>
+        <TouchableOpacity onPress={onIconPress} style={styles.iconWrapper}>
           <Ionicons name={icon} style={styles.icon} />
         </TouchableOpacity>
       )}
       {isError && (
-        <Text variant="subhead" color="notification">
+        <Text color="notification" variant="subhead">
           {error}
         </Text>
       )}

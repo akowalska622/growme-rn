@@ -1,7 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { RootState } from 'Redux/store';
+import { RootStateType } from 'Redux/store';
 
-const selectAuth = (state: RootState) => state.auth;
+const selectAuth = (state: RootStateType) => state.auth;
 
-export const selectIsAuthenticated = createSelector(selectAuth, (auth) => auth.isAuthenticated)
+export const selectIsAuthenticated = createSelector(
+  selectAuth,
+  (auth) => auth.isAuthenticated,
+);
