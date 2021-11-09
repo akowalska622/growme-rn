@@ -7,7 +7,7 @@ const baseReducer = combineReducers({
   auth: authReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootStateType = ReturnType<typeof store.getState>;
 
 const middleware: any[] = [thunk];
 const composeEnhancers =

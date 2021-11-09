@@ -1,4 +1,4 @@
 export enum EAuthContext {
-  SIGN_IN = 'SIGN_IN',
-  SIGN_UP = 'SIGN_UP',
+  signIn = 'SIGN_IN',
+  signUp = 'SIGN_UP',
 }

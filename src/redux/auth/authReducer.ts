@@ -16,20 +16,20 @@ const initialState: IAuthState = {
 
 export const authReducer = produce((draftState, { type, payload, error }) => {
   switch (type) {
-    case EAuthTypes.SIGN_IN_SUCCESS:
-    case EAuthTypes.SIGN_UP_SUCCESS:
+    case EAuthTypes.signInSuccess:
+    case EAuthTypes.signUpSuccess:
       draftState.user = payload;
       draftState.isAuthenticated = true;
       break;
-    case EAuthTypes.SIGN_IN_FAILURE:
-    case EAuthTypes.SIGN_UP_FAILURE:
+    case EAuthTypes.signInFailure:
+    case EAuthTypes.signUpFailure:
       draftState.error = error;
       break;
-    case EAuthTypes.SIGN_OUT_SUCCESS:
+    case EAuthTypes.signOutSuccess:
       draftState.user = null;
       draftState.isAuthenticated = false;
       break;
-    case EAuthTypes.SIGN_OUT_FAILURE:
+    case EAuthTypes.signOutFailure:
       draftState.error = error;
       break;
   }

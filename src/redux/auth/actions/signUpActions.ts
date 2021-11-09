@@ -4,18 +4,18 @@ import { EAuthTypes } from 'Redux/auth/authTypes';
 import { auth } from 'Config/firebase';
 
 const signUpAction = () => ({
-  type: EAuthTypes.SIGN_UP,
+  type: EAuthTypes.signUp,
 });
 
 // TODO: fix response type
 export const signUpSuccessfullyAction = (response: any) => ({
-  type: EAuthTypes.SIGN_UP_SUCCESS,
+  type: EAuthTypes.signUpSuccess,
   payload: response,
 });
 
 // TODO: fix error type
 export const signUpUnsuccessfullyAction = (error: any) => ({
-  type: EAuthTypes.SIGN_UP_FAILURE,
+  type: EAuthTypes.signUpFailure,
   error,
 });
 

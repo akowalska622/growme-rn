@@ -7,5 +7,5 @@ export const styles = StyleSheet.create({
     flex: 1,
     ...Layout.center,
     ...Spacing.padding,
-  }
+  },
 });

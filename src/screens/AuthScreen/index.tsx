@@ -16,7 +16,7 @@ enum EAuthScreenFields {
   confirmPassword = 'confirmPassword',
 }
 
-export interface AuthFormData {
+export interface IAuthFormData {
   username: string;
   password: string;
   confirmPassword: string;
@@ -58,35 +58,35 @@ export const AuthScreen = () => {
     <Screen>
       <View style={styles.signInContainer}>
         <FormInput
-          label="E-mail"
           control={control}
+          label="E-mail"
           name={EAuthScreenFields.username}
         />
         <FormInput
-          label="Password"
           autoCorrect={false}
           control={control}
           icon={showPassword ? 'ios-eye-off' : 'ios-eye'}
+          label="Password"
           name={EAuthScreenFields.password}
           onIconPress={togglePassword}
           secureTextEntry={!showPassword}
         />
         {!isLogInContext && (
           <FormInput
-            label="Confirm password"
             autoCorrect={false}
             control={control}
             icon={showConfirmPassword ? 'ios-eye-off' : 'ios-eye'}
+            label="Confirm password"
             name={EAuthScreenFields.confirmPassword}
             onIconPress={toggleConfirmPassword}
             secureTextEntry={!showConfirmPassword}
           />
         )}
-        <Button title={primaryButtonTitle} onPress={handleSubmit(onSubmit)} />
+        <Button onPress={handleSubmit(onSubmit)} title={primaryButtonTitle} />
       </View>
       <View style={styles.switchContextContainer}>
         <Text variant="callout">{additionalInfo}</Text>
-        <Button title={secondaryButtonTitle} onPress={changeContext} />
+        <Button onPress={changeContext} title={secondaryButtonTitle} />
       </View>
     </Screen>
   );

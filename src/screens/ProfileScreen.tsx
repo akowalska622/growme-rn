@@ -11,7 +11,7 @@ export const ProfileScreen = () => {
 
   return (
     <Screen>
-      <Button title="Log out" onPress={handleLogOut} />
+      <Button onPress={handleLogOut} title="Log out" />
     </Screen>
   );
 };

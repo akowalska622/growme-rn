@@ -4,17 +4,17 @@ import { EAuthTypes } from 'Redux/auth/authTypes';
 import { auth } from 'Config/firebase';
 
 const signOutAction = () => ({
-  type: EAuthTypes.SIGN_OUT,
+  type: EAuthTypes.signOut,
 });
 
 // TODO: fix response type
 export const signOutSuccessfullyAction = () => ({
-  type: EAuthTypes.SIGN_OUT_SUCCESS,
+  type: EAuthTypes.signOutSuccess,
 });
 
 // TODO: fix error type
 export const signOutUnsuccessfullyAction = (error: any) => ({
-  type: EAuthTypes.SIGN_OUT_FAILURE,
+  type: EAuthTypes.signOutFailure,
   error,
 });
 

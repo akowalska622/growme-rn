@@ -4,6 +4,8 @@ import { ColorType } from 'Constants/colors';
 import { FontSizeType } from 'Constants/typography';
 import { getStyles } from './Text.styles';
 
+import { useCustomTheme } from 'Hooks/useCustomTheme';
+
 interface ITextProps {
   children: string;
   color?: ColorType;
@@ -15,7 +17,9 @@ export const Text = ({
   color = 'text',
   variant = 'body',
 }: ITextProps) => {
-  const styles = getStyles(color);
+  const { colors } = useCustomTheme();
+
+  const styles = getStyles(colors[color]);
 
   return <RNText style={[styles.base, styles[variant]]}>{children}</RNText>;
 };
