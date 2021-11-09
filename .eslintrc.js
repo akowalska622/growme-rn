@@ -18,24 +18,49 @@ module.exports = {
     'import',
     '@typescript-eslint',
     'sort-imports-es6-autofix',
+    'react-hooks',
   ],
   rules: {
+    // TYPESCRIPT
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    '@typescript-eslint/naming-convention': [
+      2,
+      { selector: 'typeLike', format: ['PascalCase'] },
+      { selector: 'typeAlias', format: ['PascalCase'], suffix: ['Type'] },
+      { selector: 'enum', format: ['PascalCase'], prefix: ['E'] },
+      { selector: 'enumMember', format: ['camelCase'] },
+      { selector: 'interface', format: ['PascalCase'], prefix: ['I'] },
+    ],
+
+    // REACT
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
-    'sort-imports-es6-autofix/sort-imports-es6': [
-      'error',
+    'react/jsx-sort-props': [
+      2,
       {
-        memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'],
+        callbacksLast: false,
+        shorthandFirst: false,
+        shorthandLast: false,
+        ignoreCase: true,
+        noSortAlphabetically: false,
+        reservedFirst: ['key', 'ref'],
       },
     ],
+
+    // OTHER
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      'error',
+      { memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'] },
+    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
