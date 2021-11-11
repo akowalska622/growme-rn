@@ -47,7 +47,7 @@ export const AuthScreen = () => {
           ),
   });
 
-  const { control, handleSubmit } = useForm<AuthFormData>({
+  const { control, handleSubmit } = useForm<IAuthFormData>({
     resolver: yupResolver(authSchema),
   });
 
