@@ -12,6 +12,7 @@ interface ITextProps {
   variant?: FontSizeType;
 }
 
+// TODO: use useWindowDimensions().fontScale
 export const Text = ({
   children,
   color = 'text',
