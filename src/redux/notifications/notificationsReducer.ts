@@ -16,7 +16,7 @@ export const notificationsReducer = (
 ) => {
   const { type } = action;
   switch (action.type) {
-    case ENotificationsTypes.dismissNotification:
+    case ENotificationsTypes.dismissNotificationById:
       state.delete(action.id);
       return state;
     case ENotificationsTypes.dismissAllNotifications:

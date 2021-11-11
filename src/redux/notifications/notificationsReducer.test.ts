@@ -1,3 +1,8 @@
+import { ENotificationTypes } from 'Enums/ENotificationTypes';
+import {
+  dismissAllNotifications,
+  dismissNotificationById,
+} from './notificationsActions';
 import { notificationsReducer } from './notificationsReducer';
 
 describe('Notifications reducer', () => {
@@ -5,7 +10,7 @@ describe('Notifications reducer', () => {
     const initialState = new Map();
     const mockAction = { type: 'SOME_SUCCESS', success: 'Yay!' };
     const mockState = new Map([
-      ['SOME_SUCCESS', { type: 'success', message: 'Yay!' }],
+      ['SOME_SUCCESS', { type: ENotificationTypes.success, message: 'Yay!' }],
     ]);
     expect(notificationsReducer(initialState, mockAction)).toEqual(mockState);
   });
@@ -14,29 +19,29 @@ describe('Notifications reducer', () => {
     const initialState = new Map();
     const mockAction = { type: 'SOME_FAILURE', failure: 'Oops!' };
     const mockState = new Map([
-      ['SOME_FAILURE', { type: 'failure', message: 'Oops!' }],
+      ['SOME_FAILURE', { type: ENotificationTypes.failure, message: 'Oops!' }],
     ]);
     expect(notificationsReducer(initialState, mockAction)).toEqual(mockState);
   });
 
   it('should return state without the notification of passed id, when it handles DISMISS_NOTIFICATION', () => {
     const initialState = new Map([
-      ['SOME_SUCCESS', { type: 'success', message: 'Yay!' }],
-      ['SOME_FAILURE', { type: 'failure', message: 'Oops!' }],
+      ['SOME_SUCCESS', { type: ENotificationTypes.success, message: 'Yay!' }],
+      ['SOME_FAILURE', { type: ENotificationTypes.failure, message: 'Oops!' }],
     ]);
-    const mockAction = { type: 'DISMISS_NOTIFICATION', id: 'SOME_FAILURE' };
+    const mockAction = dismissNotificationById('SOME_FAILURE');
     const mockState = new Map([
-      ['SOME_SUCCESS', { type: 'success', message: 'Yay!' }],
+      ['SOME_SUCCESS', { type: ENotificationTypes.success, message: 'Yay!' }],
     ]);
     expect(notificationsReducer(initialState, mockAction)).toEqual(mockState);
   });
 
   it('should return empty state, when it handles DISMISS_ALL_NOTIFICATIONS', () => {
     const initialState = new Map([
-      ['SOME_SUCCESS', { type: 'success', message: 'Yay!' }],
-      ['SOME_FAILURE', { type: 'failure', message: 'Oops!' }],
+      ['SOME_SUCCESS', { type: ENotificationTypes.success, message: 'Yay!' }],
+      ['SOME_FAILURE', { type: ENotificationTypes.failure, message: 'Oops!' }],
     ]);
-    const mockAction = { type: 'DISMISS_ALL_NOTIFICATIONS' };
+    const mockAction = dismissAllNotifications();
     const mockState = new Map();
     expect(notificationsReducer(initialState, mockAction)).toEqual(mockState);
   });

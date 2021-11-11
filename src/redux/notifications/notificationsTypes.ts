@@ -1,4 +1,4 @@
 export enum ENotificationsTypes {
-  dismissNotification = 'DISMISS_NOTIFICATION',
+  dismissNotificationById = 'DISMISS_NOTIFICATION_BY_ID',
   dismissAllNotifications = 'DISMISS_ALL_NOTIFICATIONS',
 }
