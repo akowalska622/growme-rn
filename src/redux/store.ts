@@ -1,5 +1,8 @@
 import thunk from 'redux-thunk';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { enableMapSet } from 'immer';
+
+enableMapSet();
 
 import { authReducer } from 'Redux/auth/authReducer';
 import { notificationsReducer } from 'Redux/notifications/notificationsReducer';

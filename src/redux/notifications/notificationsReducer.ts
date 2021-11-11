@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 import { EDefaultNotificationMessages } from 'Enums/EDefaultNotificationMessages';
 import { ENotificationTypes } from 'Enums/ENotificationTypes';
 import { ENotificationsTypes } from './notificationsTypes';
@@ -12,27 +14,26 @@ export type NotificationsStateType = Map<string, NotificationType>;
 
 const initialState: NotificationsStateType = new Map();
 
-export const notificationsReducer = (
-  state = initialState,
-  action: { [x: string]: any; type: string },
-) => {
-  const { type } = action;
-  switch (action.type) {
-    case ENotificationsTypes.dismissNotificationById:
-      state.delete(action.id);
-      return state;
-    case ENotificationsTypes.dismissAllNotifications:
-      state.clear();
-      return state;
-    default:
-      const notificationType = getNotificationType(type);
-      if (notificationType)
-        state.set(type, {
-          type: notificationType,
-          message:
-            action[notificationType] ??
-            EDefaultNotificationMessages[notificationType],
-        });
-      return state;
-  }
-};
+export const notificationsReducer = produce(
+  (draftState, action: { [x: string]: any; type: string }) => {
+    const { type } = action;
+    const notificationType = getNotificationType(type);
+    if (notificationType)
+      draftState.set(type, {
+        type: notificationType,
+        message:
+          action[notificationType] ??
+          EDefaultNotificationMessages[notificationType],
+      });
+
+    switch (action.type) {
+      case ENotificationsTypes.dismissNotificationById:
+        draftState.delete(action.id);
+        return;
+      case ENotificationsTypes.dismissAllNotifications:
+        draftState.clear();
+        return;
+    }
+  },
+  initialState,
+);
