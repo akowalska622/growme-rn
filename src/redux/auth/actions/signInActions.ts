@@ -11,6 +11,7 @@ const signInAction = () => ({
 export const signInSuccessfullyAction = (response: any) => ({
   type: EAuthTypes.signInSuccess,
   payload: response,
+  withoutAlert: true,
 });
 
 // TODO: fix error type

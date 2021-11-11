@@ -17,14 +17,16 @@ const initialState: NotificationsStateType = new Map();
 export const notificationsReducer = produce(
   (draftState, action: { [x: string]: any; type: string }) => {
     const { type } = action;
-    const notificationType = getNotificationType(type);
-    if (notificationType)
-      draftState.set(type, {
-        type: notificationType,
-        message:
-          action[notificationType] ??
-          EDefaultNotificationMessages[notificationType],
-      });
+    if (!action.withoutAlert) {
+      const notificationType = getNotificationType(type);
+      if (notificationType)
+        draftState.set(type, {
+          type: notificationType,
+          message:
+            action[notificationType] ??
+            EDefaultNotificationMessages[notificationType],
+        });
+    }
 
     switch (action.type) {
       case ENotificationsTypes.dismissNotificationById:
