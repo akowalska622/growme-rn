@@ -1,3 +1,5 @@
+import { ENotificationsTypes } from './notificationsTypes';
+
 const initialState = new Map();
 
 // TODO: move out
@@ -22,10 +24,10 @@ export const notificationsReducer = (
 ) => {
   const { type } = action;
   switch (action.type) {
-    case 'DISMISS_NOTIFICATION':
+    case ENotificationsTypes.dismissNotification:
       state.delete(action.id);
       return state;
-    case 'DISMISS_ALL_NOTIFICATIONS':
+    case ENotificationsTypes.dismissAllNotifications:
       state.clear();
       return state;
     default:
