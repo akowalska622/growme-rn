@@ -7,5 +7,6 @@ const selectNotifications = (state: RootStateType) => state.notifications;
 
 export const selectFirstNotification = createSelector(
   selectNotifications,
-  (notifications) => notifications.entries().next().value as NotificationType,
+  (notifications) =>
+    notifications.entries().next().value as [string, NotificationType],
 );
