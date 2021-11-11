@@ -3,10 +3,12 @@ import { ENotificationTypes } from 'Enums/ENotificationTypes';
 import { ENotificationsTypes } from './notificationsTypes';
 import { getNotificationType } from './helpers';
 
-export type NotificationsStateType = Map<
-  string,
-  { type: ENotificationTypes; message: string | EDefaultNotificationMessages }
->;
+export type NotificationType = {
+  type: ENotificationTypes;
+  message: string | EDefaultNotificationMessages;
+};
+
+export type NotificationsStateType = Map<string, NotificationType>;
 
 const initialState: NotificationsStateType = new Map();
 
