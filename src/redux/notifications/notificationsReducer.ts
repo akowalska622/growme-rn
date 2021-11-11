@@ -1,22 +1,14 @@
+import { EDefaultNotificationMessages } from 'Enums/EDefaultNotificationMessages';
+import { ENotificationTypes } from 'Enums/ENotificationTypes';
 import { ENotificationsTypes } from './notificationsTypes';
+import { getNotificationType } from './helpers';
 
-const initialState = new Map();
+export type NotificationsStateType = Map<
+  string,
+  { type: ENotificationTypes; message: string | EDefaultNotificationMessages }
+>;
 
-// TODO: move out
-const notificationTypes = ['success', 'failure'] as const;
-type NotificationType = typeof notificationTypes[number];
-
-// TODO: move out
-const defaultMessages = {
-  failure: 'Oops, something went wrong!',
-  success: 'Yay, action successful!',
-};
-
-// TODO: move out
-const getNotificationType = (type: string): NotificationType | void =>
-  notificationTypes.find((notificationType) =>
-    type.toLowerCase().includes(notificationType),
-  );
+const initialState: NotificationsStateType = new Map();
 
 export const notificationsReducer = (
   state = initialState,
@@ -36,7 +28,8 @@ export const notificationsReducer = (
         state.set(type, {
           type: notificationType,
           message:
-            action[notificationType] ?? defaultMessages[notificationType],
+            action[notificationType] ??
+            EDefaultNotificationMessages[notificationType],
         });
       return state;
   }
