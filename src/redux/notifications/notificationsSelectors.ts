@@ -11,5 +11,5 @@ export const selectAreNotifications = createSelector(
 
 export const selectFirstNotification = createSelector(
   selectNotifications,
-  (notifications) => notifications.entries().next(),
+  (notifications) => notifications.entries().next().value,
 );
