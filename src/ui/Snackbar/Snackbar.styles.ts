@@ -9,6 +9,7 @@ export const getStyles = (colors: any) =>
   StyleSheet.create({
     base: {
       ...Layout.spaceBetween,
+      ...Layout.row,
       borderRadius: SNACKBAR_BORDER_RADIUS,
       bottom: 10,
       color: colors.background,
