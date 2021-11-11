@@ -6,4 +6,13 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
   },
+  spaceBetween: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
 });
