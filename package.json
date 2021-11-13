@@ -103,7 +103,8 @@
       "/src/types",
       "/storybook",
       "babel.config.js"
-    ]
+    ],
+    "setupFiles": ["./setupTests.ts"]
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
