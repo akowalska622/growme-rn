@@ -30,7 +30,7 @@ export const Navigation = () => {
             name="Home"
             options={{
               tabBarIcon: ({ color, size }) => (
-                <Ionicons color={color} name="home" size={size} />
+                <Ionicons color={color} name="home-outline" size={size} />
               ),
             }}
           />
@@ -39,7 +39,7 @@ export const Navigation = () => {
             name="Schedule"
             options={{
               tabBarIcon: ({ color, size }) => (
-                <Ionicons color={color} name="calendar" size={size} />
+                <Ionicons color={color} name="calendar-outline" size={size} />
               ),
             }}
           />
@@ -48,7 +48,7 @@ export const Navigation = () => {
             name="Profile"
             options={{
               tabBarIcon: ({ color, size }) => (
-                <Ionicons color={color} name="person" size={size} />
+                <Ionicons color={color} name="person-outline" size={size} />
               ),
             }}
           />
@@ -58,7 +58,7 @@ export const Navigation = () => {
               name="Storybook"
               options={{
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons color={color} name="book" size={size} />
+                  <Ionicons color={color} name="book-outline" size={size} />
                 ),
               }}
             />
