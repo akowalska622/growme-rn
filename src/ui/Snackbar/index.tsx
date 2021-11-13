@@ -15,6 +15,7 @@ interface ISnackbarProps {
   type: ENotificationTypes;
 }
 
+// TODO: onPress show more
 export const Snackbar = ({ id, message, type }: ISnackbarProps) => {
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -30,7 +31,9 @@ export const Snackbar = ({ id, message, type }: ISnackbarProps) => {
           name={ESnackbarIcons[type]}
           style={[styles.icon, styles.typeIcon]}
         />
-        <Text color="background">{message}</Text>
+        <Text color="background" numberOfLines={1} style={styles.text}>
+          {message}
+        </Text>
       </View>
       <TouchableOpacity onPress={handleDismiss} style={styles.closeButton}>
         <Ionicons name="close-circle" style={styles.icon} />
