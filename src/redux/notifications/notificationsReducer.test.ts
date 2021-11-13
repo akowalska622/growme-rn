@@ -8,7 +8,7 @@ import { notificationsReducer } from './notificationsReducer';
 describe('Notifications reducer', () => {
   it('should return state with a success notification, when it handles *_SUCCESS', () => {
     const initialState = new Map();
-    const mockAction = { type: 'SOME_SUCCESS', success: 'Yay!' };
+    const mockAction = { type: 'SOME_SUCCESS', message: 'Yay!' };
     const mockState = new Map([
       ['SOME_SUCCESS', { type: ENotificationTypes.success, message: 'Yay!' }],
     ]);
@@ -17,7 +17,7 @@ describe('Notifications reducer', () => {
 
   it('should return state with a failure notification, when it handles *_FAILURE', () => {
     const initialState = new Map();
-    const mockAction = { type: 'SOME_FAILURE', failure: 'Oops!' };
+    const mockAction = { type: 'SOME_FAILURE', message: 'Oops!' };
     const mockState = new Map([
       ['SOME_FAILURE', { type: ENotificationTypes.failure, message: 'Oops!' }],
     ]);
