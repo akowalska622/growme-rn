@@ -8,6 +8,7 @@ import { AuthScreen } from 'Screens/AuthScreen';
 import { HomeScreen } from 'Screens/HomeScreen';
 import { LinksScreen } from 'Screens/LinksScreen';
 import { ProfileScreen } from 'Screens/ProfileScreen';
+import { ScheduleScreen } from 'Screens/ScheduleScreen';
 
 import { darkTheme, lightTheme } from 'Constants/themes';
 import { selectIsAuthenticated } from 'Redux/auth/authSelectors';
@@ -23,8 +24,9 @@ export const Navigation = () => {
     <NavigationContainer theme={scheme === 'dark' ? darkTheme : lightTheme}>
       {isAuthenticated ? (
         <Tab.Navigator>
-          <Tab.Screen component={ProfileScreen} name="Profile" />
           <Tab.Screen component={HomeScreen} name="Home" />
+          <Tab.Screen component={ScheduleScreen} name="Schedule" />
+          <Tab.Screen component={ProfileScreen} name="Profile" />
           {__DEV__ && <Tab.Screen component={LinksScreen} name="Storybook" />}
         </Tab.Navigator>
       ) : (
