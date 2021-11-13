@@ -7,15 +7,13 @@ const signOutAction = () => ({
   type: EAuthTypes.signOut,
 });
 
-// TODO: fix response type
 export const signOutSuccessfullyAction = () => ({
   type: EAuthTypes.signOutSuccess,
 });
 
-// TODO: fix error type
-export const signOutUnsuccessfullyAction = (error: any) => ({
+export const signOutUnsuccessfullyAction = (message: string) => ({
   type: EAuthTypes.signOutFailure,
-  error,
+  message,
 });
 
 // TODO: fix dispatch type
@@ -25,6 +23,6 @@ export const signOut = () => async (dispatch: any) => {
     await signOutRequest(auth);
     dispatch(signOutSuccessfullyAction());
   } catch ({ message }) {
-    dispatch(signOutUnsuccessfullyAction(message));
+    dispatch(signOutUnsuccessfullyAction(message as string));
   }
 };

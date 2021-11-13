@@ -13,10 +13,9 @@ export const signInSuccessfullyAction = (response: any) => ({
   payload: response,
 });
 
-// TODO: fix error type
-export const signInUnsuccessfullyAction = (error: any) => ({
+export const signInUnsuccessfullyAction = (message: string) => ({
   type: EAuthTypes.signInFailure,
-  error,
+  message,
 });
 
 // TODO: fix dispatch type
@@ -31,6 +30,6 @@ export const signIn =
       );
       dispatch(signInSuccessfullyAction(user));
     } catch ({ message }) {
-      dispatch(signInUnsuccessfullyAction(message));
+      dispatch(signInUnsuccessfullyAction(message as string));
     }
   };

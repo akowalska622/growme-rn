@@ -22,22 +22,22 @@
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
-    "expo": "~43.0.0",
+    "expo": "~43.0.2",
     "expo-status-bar": "~1.1.0",
     "firebase": "^9.2.0",
     "immer": "^9.0.6",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-hook-form": "^7.18.1",
-    "react-native": "0.64.2",
-    "react-native-dotenv": "^3.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.19.4",
+    "react-native": "^0.64.3",
+    "react-native-dotenv": "^3.3.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
-    "react-native-web": "0.17.1",
+    "react-native-web": "0.17.5",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.0",
-    "reselect": "^4.1.1",
+    "reselect": "^4.1.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
@@ -103,7 +103,8 @@
       "/src/types",
       "/storybook",
       "babel.config.js"
-    ]
+    ],
+    "setupFiles": ["./setupTests.ts"]
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",

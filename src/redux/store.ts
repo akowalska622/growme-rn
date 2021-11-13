@@ -1,10 +1,15 @@
 import thunk from 'redux-thunk';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { enableMapSet } from 'immer';
 
-import { authReducer } from './auth/authReducer';
+enableMapSet();
+
+import { authReducer } from 'Redux/auth/authReducer';
+import { notificationsReducer } from 'Redux/notifications/notificationsReducer';
 
 const baseReducer = combineReducers({
   auth: authReducer,
+  notifications: notificationsReducer,
 });
 
 export type RootStateType = ReturnType<typeof store.getState>;
